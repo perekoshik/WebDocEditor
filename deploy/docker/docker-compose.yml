@@ -1,0 +1,19 @@
+services:
+  docserver:
+    image: onlyoffice/documentserver:latest
+    container_name: oo-docserver
+    ports:
+      - "${DOCSERVER_PORT:-18080}:80"
+    environment:
+      - JWT_ENABLED=true
+      - JWT_SECRET=${JWT_SECRET}
+    volumes:
+      - oo_data:/var/www/onlyoffice/Data
+      - oo_log:/var/log/onlyoffice
+      - oo_pg:/var/lib/postgresql
+    restart: unless-stopped
+
+volumes:
+  oo_data:
+  oo_log:
+  oo_pg:
