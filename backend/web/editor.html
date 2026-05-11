@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>LegalEdit · Редактор</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" />
+    <link rel="stylesheet" href="/style.css" />
+</head>
+<body class="editor-page">
+<div class="editor-bar">
+    <a class="back" href="/">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        Назад
+    </a>
+    <div id="doc-title" class="doc-title" title="Кликните, чтобы переименовать"></div>
+    <div class="export-wrap">
+        <button id="export-btn" class="btn">
+            Экспорт
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+        </button>
+        <div id="export-menu" class="menu hidden">
+            <button data-format="pdf">PDF</button>
+            <button data-format="docx">DOCX</button>
+        </div>
+    </div>
+</div>
+<div id="editor-placeholder"></div>
+<script type="module" src="/js/editor.js"></script>
+</body>
+</html>

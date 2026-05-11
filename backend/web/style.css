@@ -1,0 +1,315 @@
+:root {
+    --bg: #FFFFFF;
+    --bg-soft: #FAFAFA;
+    --text: #1E1E1E;
+    --muted: #757575;
+    --border: #E5E5E5;
+    --accent: #0D99FF;
+    --accent-hover: #0085E6;
+    --hover: #F4F4F4;
+    --radius: 6px;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: 14px;
+    line-height: 1.45;
+    -webkit-font-smoothing: antialiased;
+}
+
+button, input { font-family: inherit; font-size: inherit; color: inherit; }
+
+.hidden { display: none !important; }
+
+.app {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 240px;
+    background: var(--bg-soft);
+    border-right: 1px solid var(--border);
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.brand {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    padding: 0 8px;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.nav-item {
+    padding: 8px 12px;
+    border-radius: var(--radius);
+    color: var(--text);
+    text-decoration: none;
+    font-size: 13px;
+    transition: background 150ms ease;
+}
+
+.nav-item:hover { background: var(--hover); }
+.nav-item.active { background: var(--hover); font-weight: 500; }
+
+.main {
+    flex: 1;
+    padding: 24px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    min-width: 0;
+}
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 320px;
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0 10px;
+    transition: border-color 150ms ease, background 150ms ease;
+}
+
+.search:focus-within {
+    border-color: var(--accent);
+    background: var(--bg);
+}
+
+.search svg { color: var(--muted); flex-shrink: 0; }
+
+.search input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 8px;
+    font-size: 13px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: var(--radius);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: background 150ms ease, border-color 150ms ease;
+}
+
+.btn:hover { background: var(--hover); }
+
+.btn.primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}
+
+.btn.primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+
+.dropzone {
+    flex: 1;
+    position: relative;
+    border-radius: var(--radius);
+    transition: background 150ms ease;
+}
+
+.dropzone.dragging {
+    background: rgba(13, 153, 255, 0.06);
+    outline: 2px dashed var(--accent);
+    outline-offset: -4px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+}
+
+.card {
+    position: relative;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    cursor: pointer;
+    transition: background 150ms ease, border-color 150ms ease;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.card:hover { background: var(--hover); border-color: #d0d0d0; }
+
+.card-icon {
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+}
+
+.card-title {
+    font-size: 14px;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-break: break-word;
+}
+
+.card-meta {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: auto;
+}
+
+.kebab {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 28px;
+    height: 28px;
+    border: none;
+    background: transparent;
+    border-radius: var(--radius);
+    cursor: pointer;
+    color: var(--muted);
+    opacity: 0;
+    transition: opacity 150ms ease, background 150ms ease;
+}
+
+.card:hover .kebab { opacity: 1; }
+.kebab:hover { background: rgba(0,0,0,0.06); }
+
+.menu {
+    position: absolute;
+    top: 36px;
+    right: 8px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    min-width: 160px;
+    padding: 4px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu button {
+    text-align: left;
+    background: transparent;
+    border: none;
+    padding: 8px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background 150ms ease;
+}
+
+.menu button:hover { background: var(--hover); }
+
+.empty {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--muted);
+    border: 2px dashed var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+    gap: 8px;
+}
+
+.empty h2 {
+    margin: 12px 0 0 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text);
+}
+
+.empty p { margin: 0; font-size: 13px; max-width: 360px; }
+
+.editor-page { display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+
+.editor-bar {
+    height: 40px;
+    flex-shrink: 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    gap: 16px;
+    background: var(--bg);
+}
+
+.back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 13px;
+    padding: 4px 8px;
+    border-radius: var(--radius);
+    transition: background 150ms ease;
+}
+
+.back:hover { background: var(--hover); }
+
+.doc-title {
+    flex: 1;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: background 150ms ease;
+}
+
+.doc-title:hover { background: var(--hover); }
+
+.export-wrap { position: relative; }
+
+.export-wrap .menu { top: 36px; right: 0; min-width: 120px; }
+
+#editor-placeholder { flex: 1; min-height: 0; }
